@@ -22,3 +22,11 @@ td {
     text-align: center;
     padding: 3px 6px;
 }
+
+.alternate {
+    background-color: #DDF;
+}
+
+.selected {
+    background-color: #FFD;
+}
