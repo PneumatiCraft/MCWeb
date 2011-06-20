@@ -16,7 +16,7 @@ get '/' do
   haml :server_list
 end
 
-get '/detail/:path' do
-  path = File.join(settings.mcroot, params[:path])
-  "path"
+get '/detail/*' do
+  path = File.join(settings.mcroot, params[:splat][0])
+  path
 end

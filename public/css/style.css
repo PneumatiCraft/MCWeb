@@ -9,6 +9,10 @@ div.contents {
     margin: 0 auto;
 }
 
+div#detail {
+    margin-top: 20px;
+}
+
 table {
     border: 0;
     border-spacing: 0;

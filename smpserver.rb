@@ -83,7 +83,12 @@ class SMPServer
 
   def relative_root(real_root)
     if @root.start_with?(real_root)
-      return @root[real_root.length..-1]
+      rel = @root[real_root.length..-1]
+      if rel.start_with?("/")
+        return rel[1..-1]
+      else
+        return rel
+      end
     else
       return @root
     end
