@@ -1,0 +1,7 @@
+%html
+    %head
+        %title= "Minecraft Servers"
+    %body
+        - @servers.each do |server|
+            .server
+                = server.name
