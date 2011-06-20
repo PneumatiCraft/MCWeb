@@ -11,6 +11,6 @@ configure do
 end
 
 get '/' do
-  @servers = SMPServer.find_servers(settings.mcroot)
+  @servers = SMPServer.find_servers(settings.mcroot).sort_by { |srv| srv.port }
   haml :server_list
 end
