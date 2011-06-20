@@ -11,6 +11,6 @@ configure do
 end
 
 get '/' do
-  @servers = [ SMPServer.new(File.join(settings.mcroot, "production"), "Production" ) ]
+  @servers = SMPServer.find_servers(settings.mcroot)
   haml :server_list
 end

@@ -2,6 +2,21 @@
     %head
         %title= "Minecraft Servers"
     %body
-        - @servers.each do |server|
-            .server
-                = server.name
+        %div{:style => "text-align: center; font-size:20pt; font-weight:bold;"}= "Minecraft Servers"
+        %div{:style => "width:1000px; margin:0 auto;"}
+            %table
+                %tr
+                    %th= "Name"
+                    %th= "Up"
+                    %th= "Port"
+                    %th{:style => "text-align:left;"}= "Description"
+                - @servers.each do |server|
+                    %tr
+                        %td{:align => "center"}= server.name
+                        %td{:align => "center"}
+                            - if server.running?
+                                %span{:style => "color:green;"}= "YES"
+                            - else
+                                %span{:style => "color:red;"}= "NO"
+                        %td{:align => "center"}= server.port
+                        %td= server.desc
