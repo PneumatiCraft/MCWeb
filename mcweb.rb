@@ -11,6 +11,12 @@ configure do
 end
 
 get '/' do
-  @servers = SMPServer.find_servers(settings.mcroot).sort_by { |srv| srv.port }
+  @mcroot = settings.mcroot
+  @servers = SMPServer.find_servers(@mcroot).sort_by { |srv| srv.port }
   haml :server_list
+end
+
+get '/detail/:path' do
+  path = File.join(settings.mcroot, params[:path])
+  "path"
 end

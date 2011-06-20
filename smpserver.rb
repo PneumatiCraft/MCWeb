@@ -81,9 +81,9 @@ class SMPServer
     end
   end
 
-  def relative_root
-    if @root.start_with?(@mcroot)
-      return @root[@mcroot.length..-1]
+  def relative_root(real_root)
+    if @root.start_with?(real_root)
+      return @root[real_root.length..-1]
     else
       return @root
     end

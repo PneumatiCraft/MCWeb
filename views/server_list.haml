@@ -24,6 +24,6 @@
                             - else
                                 %span{:style => "color:red;"}= "NO"
                         %td= server.port
-                        %td= server.relative_root
+                        %td= server.relative_root(@mcroot)
                         %td{:style => "text-align:left;"}= server.desc
             #detail= ""
