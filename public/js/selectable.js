@@ -6,9 +6,11 @@ $(document).ready(function() {
         relPath = $($(this).children("td")[3]).html();
         $.ajax({
             url: "/detail/" + relPath,
-            type: "GET",
             success: function(data, textStatus, jqXHR) {
-                $("#detail").html(data);
+                $("#detail").fadeOut('fast', function() {
+                    $("#detail").html(data);
+                    $("#detail").fadeIn('fast');
+                });
             }
         });
     });

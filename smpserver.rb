@@ -14,6 +14,7 @@ class SMPServer
 
     @desc = desc
     @desc = read_desc if @desc.nil?
+
   end
 
   def read_name
@@ -60,9 +61,13 @@ class SMPServer
     end
   end
 
+  def self.mcfiles 
+    [".mcweb", "server.properties", "craftbukkit-0.0.1-SNAPSHOT.jar", "Minecraft_Server.exe", "minecraft_server.jar"]
+  end
+
   def self.find_servers(root)
     if File.exist?(root)
-      [".mcweb", "server.properties", "craftbukkit-0.0.1-SNAPSHOT.jar", "Minecraft_Server.exe", "minecraft_server.jar"].each do |fname|
+      SMPServer.mcfiles.each do |fname|
         if File.exist?(File.join(root, fname))
           puts "Found server at #{root}"
           return [ SMPServer.new(root) ]
@@ -92,6 +97,34 @@ class SMPServer
     else
       return @root
     end
+  end
+
+  def minecraft_files
+    files = []
+    SMPServer.mcfiles.each do |fname|
+      path = File.join(root, fname)
+      if File.exist?(path)
+        if File.symlink?(path)
+          fname = File.readlink(path)
+        end
+        files << fname
+      end
+    end
+    return files
+  end
+
+  def plugins
+    plugins = []
+    plugin_path = File.join(root, "plugins")
+    if File.exist?(plugin_path) && File.directory?(plugin_path)
+      Dir["#{plugin_path}/*.jar"].each do |p|
+        if File.symlink?(p)
+          p = File.readlink(p)
+        end
+        plugins << File.basename(p)
+      end
+    end
+    return plugins
   end
 
 end

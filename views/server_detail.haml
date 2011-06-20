@@ -1,0 +1,15 @@
+%span{:style => "font-size:14pt; font-weight:bold;"}= @server.name
+%br
+%span{:style => "font-style:italic;"}= @server.desc
+
+%p
+    = "Detected Minecraft files:"
+    %ul
+        - @server.minecraft_files.each do |f|
+            %li{:style => "font-family:Courier,fixed-width;"}= f
+
+%p
+    = "Detected plugins:"
+    %ul
+        - @server.plugins.each do |p|
+            %li{:style => "font-family:Courier,fixed-width;"}= p

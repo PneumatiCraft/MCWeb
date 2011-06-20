@@ -18,5 +18,6 @@ end
 
 get '/detail/*' do
   path = File.join(settings.mcroot, params[:splat][0])
-  path
+  @server = SMPServer.new(path)
+  haml :server_detail
 end
