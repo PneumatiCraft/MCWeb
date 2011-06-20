@@ -81,4 +81,12 @@ class SMPServer
     end
   end
 
+  def relative_root
+    if @root.start_with?(@mcroot)
+      return @root[@mcroot.length..-1]
+    else
+      return @root
+    end
+  end
+
 end

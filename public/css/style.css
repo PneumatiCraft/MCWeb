@@ -1,0 +1,24 @@
+div.header {
+    text-align: center;
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+div.contents {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+table {
+    border: 0;
+    border-spacing: 0;
+}
+
+th {
+    padding: 3px 6px;
+}
+
+td {
+    text-align: center;
+    padding: 3px 6px;
+}
