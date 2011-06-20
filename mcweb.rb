@@ -7,7 +7,7 @@ require 'smpserver'
 
 configure do
   set :mcroot, "/root/minecraft"
-  set :port, 25579
+  set :port, 25580
 end
 
 get '/' do
